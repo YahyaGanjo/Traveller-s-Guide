@@ -147,16 +147,72 @@
   opacity: 0.5;
   font-weight: bolder;
 }
-/*#search-btn,
-#search-bar {
-  max-width: 200px;
-  text-align: center;
-  margin: 10px auto;
-  font-size: 20px;
-}*/
 #homepage-image {
   width: 100%;
   height: 30%;
   position: absolute;
   bottom: 20px;
+}
+#place-page-container,
+#not-found-container {
+  height: 75vh;
+  margin: 20px;
+  color: crimson;
+  text-shadow: 0 0 10px crimson;
+  border-radius: 30px;
+  box-shadow: 0 0 25px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 25px;
+}
+#place-page-container {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+}
+#title {
+  grid-column: 1/5;
+}
+.grid-items {
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#discover-card {
+  position: relative;
+  grid-column: 3/5;
+  grid-row: 2/4;
+}
+#weather-card {
+  position: relative;
+  grid-row: 4/6;
+}
+#discover-card:hover,
+#weather-card:hover {
+  cursor: pointer;
+  box-shadow: 0 0 25px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.1);
+}
+.img-card {
+  width: 100%;
+  height: 100%;
+}
+#discover-card .txt-card,
+#weather-card .txt-card {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 10px;
+  font-size: large;
+}
+#wiki {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 2/3;
+  grid-row: 5/6;
 }
