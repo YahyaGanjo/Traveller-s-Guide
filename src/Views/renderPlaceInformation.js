@@ -1,11 +1,11 @@
 import createAndAppend from "../Utils/createAndAppend.js";
 import createElementWithClass from "../Utils/createElementWithClass.js";
 import fetchData from "../Utils/fetchData.js";
+import createMap from "../Utils/createMap.js";
 
 function renderPlaceInformation(countryName, place, page) {
   const title = createAndAppend(page, "h1", "title");
   title.textContent = place;
-  // const countryName = response.address.countryName;
   fetchData(`https://restcountries.eu/rest/v2/name/${countryName}`)
     .then((response) => {
       if (!response[0]) {
@@ -36,12 +36,15 @@ function renderPlaceInformation(countryName, place, page) {
       weatherImg.src = "../public/weather.jpg";
       const weatherText = createElementWithClass(weather, "p", "txt-card");
       weatherText.textContent = `Weather in ${countryName}`;
-      const time = createElementWithClass(page, "div", "grid-items");
-      time.textContent = `Time zone:    ${result.timezones[0]}`;
       const wiki = createAndAppend(page, "a", "wiki");
       wiki.target = "_blank";
       wiki.href = `https://en.wikipedia.org/wiki/${countryName}`;
       wiki.textContent = `${countryName}/Wiki`;
+      const time = createElementWithClass(page, "div", "grid-items");
+      time.textContent = `Time zone:    ${result.timezones[0]}`;
+      const lat = result.latlng[0];
+      const lng = result.latlng[1];
+      createMap(page, lat, lng);
     })
     .catch((error) => {
       console.log(error.message);
