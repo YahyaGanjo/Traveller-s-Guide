@@ -19,6 +19,6 @@ function renderHomepage() {
   searchInput.placeholder = "Search";
   createAndAppend(searchContainer, "div", "search-search");
   const image = createAndAppend(homepageContainer, "img", "homepage-image");
-  image.src = "../public/travellers.png";
+  image.src = "../../public/travellers.png";
 }
 export default renderHomepage;
