@@ -2,7 +2,7 @@ import createAndAppend from "../Utils/createAndAppend.js";
 import createElementWithClass from "../Utils/createElementWithClass.js";
 import fetchData from "../Utils/fetchData.js";
 import createMap from "../Utils/createMap.js";
-import discoverPlace from "../listeners/discoverPlace.js";
+import discoverPlace from "../Listeners/discoverPlace.js";
 
 function renderPlaceInformation(page, placeObject) {
   const title = createAndAppend(page, "h1", "title");
@@ -23,7 +23,7 @@ function renderPlaceInformation(page, placeObject) {
       region.textContent = `Region:    ${result.subregion}`;
       const discover = createAndAppend(page, "div", "discover-card");
       const discoverImg = createElementWithClass(discover, "img", "img-card");
-      discoverImg.src = "../public/discover.jpg";
+      discoverImg.src = "public/discover.jpg";
       const discoverText = createElementWithClass(discover, "p", "txt-card");
       discoverText.textContent = `Discover ${placeObject.place}`;
       discoverPlace(page, discover, placeObject);
@@ -35,7 +35,7 @@ function renderPlaceInformation(page, placeObject) {
         currency.textContent += " / " + result.currencies[0].symbol;
       const weather = createAndAppend(page, "div", "weather-card");
       const weatherImg = createElementWithClass(weather, "img", "img-card");
-      weatherImg.src = "../public/weather.jpg";
+      weatherImg.src = "public/weather.jpg";
       const weatherText = createElementWithClass(weather, "p", "txt-card");
       weatherText.textContent = `Weather in ${placeObject.country}`;
       const wiki = createAndAppend(page, "a", "wiki");
