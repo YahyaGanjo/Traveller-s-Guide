@@ -7,7 +7,6 @@ function showAirports(page, lat, lng) {
     `https://discover.search.hereapi.com/v1/discover?at=${lat},${lng}&limit=2&lang=en-US&q=airports&apiKey=j1FYuaIJtBD1DwGX-x5MXWquiUc2fjPZlbBCMoNz5Oc`
   )
     .then((response) => {
-      console.log(response);
       response.items.forEach((item) => {
         const container = createElementWithClass(page, "div", "tab-content");
         const name = createAndAppend(container, "h3");
