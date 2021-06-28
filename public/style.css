@@ -180,6 +180,9 @@
   align-items: center;
   justify-content: center;
 }
+#place-page-container img {
+  background-color: rgb(6, 6, 7);
+}
 #discover-card {
   position: relative;
   grid-column: 3/5;
