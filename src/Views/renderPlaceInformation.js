@@ -2,6 +2,7 @@ import createAndAppend from "../Utils/createAndAppend.js";
 import createElementWithClass from "../Utils/createElementWithClass.js";
 import fetchData from "../Utils/fetchData.js";
 import createMap from "../Utils/createMap.js";
+import discoverPlace from "../listeners/discoverPlace.js";
 
 function renderPlaceInformation(countryName, place, page) {
   const title = createAndAppend(page, "h1", "title");
@@ -24,7 +25,8 @@ function renderPlaceInformation(countryName, place, page) {
       const discoverImg = createElementWithClass(discover, "img", "img-card");
       discoverImg.src = "../public/discover.jpg";
       const discoverText = createElementWithClass(discover, "p", "txt-card");
-      discoverText.textContent = `Discover ${countryName}`;
+      discoverText.textContent = `Discover ${place}`;
+      discoverPlace(page, discover, place);
       const language = createElementWithClass(page, "div", "grid-items");
       language.textContent = `Language:    ${result.languages[0].name}`;
       const currency = createElementWithClass(page, "div", "grid-items");
