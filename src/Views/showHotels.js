@@ -18,16 +18,18 @@ function showHotels(page, lat, lng) {
         });
         const address = createAndAppend(container, "p");
         address.textContent = `Address : ${item.address.label}`;
-        if (item.contacts[0].phone) {
-          const details = createAndAppend(container, "p");
-          details.textContent =
-            "Telephone : " + item.contacts[0].phone[0].value;
-        }
-        if (item.contacts[0].www) {
-          const details1 = createAndAppend(container, "a");
-          details1.textContent = "Website : " + item.contacts[0].www[0].value;
-          details1.href = item.contacts[0].www[0].value;
-          details1.target = "_blank";
+        if (item.contacts) {
+          if (item.contacts[0].phone) {
+            const details = createAndAppend(container, "p");
+            details.textContent =
+              "Telephone : " + item.contacts[0].phone[0].value;
+          }
+          if (item.contacts[0].www) {
+            const details1 = createAndAppend(container, "a");
+            details1.textContent = "Website : " + item.contacts[0].www[0].value;
+            details1.href = item.contacts[0].www[0].value;
+            details1.target = "_blank";
+          }
         }
       });
     })
