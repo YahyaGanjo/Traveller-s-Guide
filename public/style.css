@@ -154,6 +154,7 @@
   bottom: 20px;
 }
 #place-page-container,
+#discover-page-container,
 #not-found-container {
   height: 75vh;
   margin: 20px;
@@ -180,8 +181,8 @@
   align-items: center;
   justify-content: center;
 }
-#place-page-container img {
-  background-color: rgb(6, 6, 7);
+#flag {
+  border: 2px solid black;
 }
 #discover-card {
   position: relative;
@@ -222,4 +223,32 @@
 #map {
   grid-column: 3/5;
   grid-row: 4/6;
+}
+#discover-page-container {
+  display: grid;
+  grid-template-rows: 10% 45% 45%;
+}
+#tab {
+  display: flex;
+  justify-content: space-evenly;
+}
+.tab-links {
+  background-color: inherit;
+  color: crimson;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.tab-links:hover {
+  font-size: 1.5em;
+  text-shadow: 0 0 10px crimson;
+}
+.tab-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-shadow: none;
 }

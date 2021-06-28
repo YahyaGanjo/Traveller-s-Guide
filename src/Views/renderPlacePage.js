@@ -17,12 +17,15 @@ function renderPlacePage(usersInput, page) {
           response.items[0].resultType === "locality" ||
           response.items[0].resultType === "administrativeArea"
         ) {
-          console.log(response);
-          renderPlaceInformation(
-            response.items[0].address.countryName,
-            response.items[0].address.label,
-            page
-          );
+          const placeObject = {
+            place: response.items[0].address.label,
+            country: response.items[0].address.countryName,
+            position: [
+              response.items[0].position.lat,
+              response.items[0].position.lng,
+            ],
+          };
+          renderPlaceInformation(page, placeObject);
         } else {
           placeNotFound(usersInput, page);
         }
