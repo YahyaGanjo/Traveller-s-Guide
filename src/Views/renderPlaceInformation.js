@@ -3,6 +3,7 @@ import createElementWithClass from "../Utils/createElementWithClass.js";
 import fetchData from "../Utils/fetchData.js";
 import createMap from "../Utils/createMap.js";
 import discoverPlace from "../Listeners/discoverPlace.js";
+import weather from "../Listeners/weather.js";
 
 function renderPlaceInformation(page, placeObject) {
   const title = createAndAppend(page, "h1", "title");
@@ -33,11 +34,20 @@ function renderPlaceInformation(page, placeObject) {
       currency.textContent = `Currency:    ${result.currencies[0].name}`;
       if (result.currencies[0].symbol)
         currency.textContent += " / " + result.currencies[0].symbol;
-      const weather = createAndAppend(page, "div", "weather-card");
-      const weatherImg = createElementWithClass(weather, "img", "img-card");
+      const weatherContainer = createAndAppend(page, "div", "weather-card");
+      const weatherImg = createElementWithClass(
+        weatherContainer,
+        "img",
+        "img-card"
+      );
       weatherImg.src = "public/weather.jpg";
-      const weatherText = createElementWithClass(weather, "p", "txt-card");
-      weatherText.textContent = `Weather in ${placeObject.country}`;
+      const weatherText = createElementWithClass(
+        weatherContainer,
+        "p",
+        "txt-card"
+      );
+      weatherText.textContent = `Weather in ${placeObject.place}`;
+      weather(page, weatherContainer, placeObject);
       const wiki = createAndAppend(page, "a", "wiki");
       wiki.target = "_blank";
       wiki.href = `https://en.wikipedia.org/wiki/${placeObject.country}`;

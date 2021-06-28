@@ -155,7 +155,8 @@
 }
 #place-page-container,
 #discover-page-container,
-#not-found-container {
+#not-found-container,
+#weather-page-container {
   height: 75vh;
   margin: 20px;
   color: crimson;
@@ -164,9 +165,9 @@
   box-shadow: 0 0 25px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
   text-align: center;
   padding: 25px;
+  display: grid;
 }
 #place-page-container {
-  display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: 20% 20% 20% 20% 20%;
 }
@@ -227,7 +228,6 @@
   grid-row: 4/6;
 }
 #discover-page-container {
-  display: grid;
   grid-template-rows: 10% 45% 45%;
 }
 #tab {
@@ -253,4 +253,16 @@
   flex-direction: column;
   justify-content: center;
   text-shadow: none;
+}
+#weather-page-container {
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 10% 90%;
+}
+#place {
+  grid-column: 1/4;
+}
+.weather-element {
+  text-shadow: none;
+  display: flex;
+  flex-direction: column;
 }
