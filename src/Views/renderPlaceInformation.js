@@ -4,10 +4,10 @@ import fetchData from "../Utils/fetchData.js";
 import createMap from "../Utils/createMap.js";
 import discoverPlace from "../Listeners/discoverPlace.js";
 
-function renderPlaceInformation(countryName, place, page) {
+function renderPlaceInformation(page, placeObject) {
   const title = createAndAppend(page, "h1", "title");
-  title.textContent = place;
-  fetchData(`https://restcountries.eu/rest/v2/name/${countryName}`)
+  title.textContent = placeObject.place;
+  fetchData(`https://restcountries.eu/rest/v2/name/${placeObject.country}`)
     .then((response) => {
       if (!response[0]) {
         throw Error(response.statusText);
@@ -15,18 +15,18 @@ function renderPlaceInformation(countryName, place, page) {
       return response;
     })
     .then((response) => {
-      console.log(response);
       const result = response[0];
       const flag = createElementWithClass(page, "img", "grid-items");
       flag.src = result.flag;
+      flag.id = "flag";
       const region = createElementWithClass(page, "div", "grid-items");
       region.textContent = `Region:    ${result.subregion}`;
       const discover = createAndAppend(page, "div", "discover-card");
       const discoverImg = createElementWithClass(discover, "img", "img-card");
       discoverImg.src = "public/discover.jpg";
       const discoverText = createElementWithClass(discover, "p", "txt-card");
-      discoverText.textContent = `Discover ${place}`;
-      discoverPlace(page, discover, place);
+      discoverText.textContent = `Discover ${placeObject.place}`;
+      discoverPlace(page, discover, placeObject);
       const language = createElementWithClass(page, "div", "grid-items");
       language.textContent = `Language:    ${result.languages[0].name}`;
       const currency = createElementWithClass(page, "div", "grid-items");
@@ -37,15 +37,15 @@ function renderPlaceInformation(countryName, place, page) {
       const weatherImg = createElementWithClass(weather, "img", "img-card");
       weatherImg.src = "public/weather.jpg";
       const weatherText = createElementWithClass(weather, "p", "txt-card");
-      weatherText.textContent = `Weather in ${countryName}`;
+      weatherText.textContent = `Weather in ${placeObject.country}`;
       const wiki = createAndAppend(page, "a", "wiki");
       wiki.target = "_blank";
-      wiki.href = `https://en.wikipedia.org/wiki/${countryName}`;
-      wiki.textContent = `${countryName}/Wiki`;
+      wiki.href = `https://en.wikipedia.org/wiki/${placeObject.country}`;
+      wiki.textContent = `${placeObject.country}/Wiki`;
       const time = createElementWithClass(page, "div", "grid-items");
       time.textContent = `Time zone:    ${result.timezones[0]}`;
-      const lat = result.latlng[0];
-      const lng = result.latlng[1];
+      const lat = placeObject.position[0];
+      const lng = placeObject.position[1];
       createMap(page, lat, lng);
     })
     .catch((error) => {

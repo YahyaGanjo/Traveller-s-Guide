@@ -1,15 +1,12 @@
 import clearCurrentPage from "../Utils/clearCurrentPage.js";
-import createAndAppend from "../Utils/createAndAppend.js";
-import fetchData from "../Utils/fetchData.js";
+import renderDiscoverPage from "../Views/renderDiscoverPage.js";
 
 function discoverPlaceHandler(page, discover, place) {
+  const lat = place.position[0];
+  const lng = place.position[1];
   discover.addEventListener("click", () => {
     clearCurrentPage(page);
-    console.log(place);
-    /* fetchData(
-      "https://discover.search.hereapi.com/v1/discover?at=40.7307999,-73.9973085&limit=2&q=Statue+of+liberty&apiKey=j1FYuaIJtBD1DwGX-x5MXWquiUc2fjPZlbBCMoNz5Oc"
-    ).then((response) => console.log(place, response));
-    */
+    renderDiscoverPage(page, lat, lng);
   });
 }
 export default discoverPlaceHandler;

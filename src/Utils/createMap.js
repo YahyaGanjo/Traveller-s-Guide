@@ -11,7 +11,7 @@ function createMap(page, lat, lng) {
 
   const map = L.map("map", {
     center: [lat, lng],
-    zoom: 5,
+    zoom: 7,
     layers: [L.tileLayer(hereTileUrl)],
   });
   map.attributionControl.addAttribution("&copy; HERE 2019");
