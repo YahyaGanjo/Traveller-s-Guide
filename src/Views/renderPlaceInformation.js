@@ -2,7 +2,7 @@ import createAndAppend from "../Utils/createAndAppend.js";
 import createElementWithClass from "../Utils/createElementWithClass.js";
 import fetchData from "../Utils/fetchData.js";
 import createMap from "../Utils/createMap.js";
-import discoverPlace from "../listeners/discoverPlace.js";
+import discoverPlace from "../Listeners/discoverPlace.js";
 
 function renderPlaceInformation(countryName, place, page) {
   const title = createAndAppend(page, "h1", "title");
