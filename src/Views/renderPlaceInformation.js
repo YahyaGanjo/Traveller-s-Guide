@@ -23,7 +23,7 @@ function renderPlaceInformation(countryName, place, page) {
       region.textContent = `Region:    ${result.subregion}`;
       const discover = createAndAppend(page, "div", "discover-card");
       const discoverImg = createElementWithClass(discover, "img", "img-card");
-      discoverImg.src = "../public/discover.jpg";
+      discoverImg.src = "public/discover.jpg";
       const discoverText = createElementWithClass(discover, "p", "txt-card");
       discoverText.textContent = `Discover ${place}`;
       discoverPlace(page, discover, place);
@@ -35,7 +35,7 @@ function renderPlaceInformation(countryName, place, page) {
         currency.textContent += " / " + result.currencies[0].symbol;
       const weather = createAndAppend(page, "div", "weather-card");
       const weatherImg = createElementWithClass(weather, "img", "img-card");
-      weatherImg.src = "../public/weather.jpg";
+      weatherImg.src = "public/weather.jpg";
       const weatherText = createElementWithClass(weather, "p", "txt-card");
       weatherText.textContent = `Weather in ${countryName}`;
       const wiki = createAndAppend(page, "a", "wiki");
