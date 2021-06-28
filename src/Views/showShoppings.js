@@ -11,10 +11,12 @@ function showShopping(page, lat, lng) {
         const container = createElementWithClass(page, "div", "tab-content");
         const name = createAndAppend(container, "h3");
         name.textContent = item.title;
-        item.categories.forEach((category) => {
-          const sort = createAndAppend(container, "p");
-          sort.textContent = `Category : ${category.name}`;
-        });
+        if (item.categories) {
+          item.categories.forEach((category) => {
+            const sort = createAndAppend(container, "p");
+            sort.textContent = `Category : ${category.name}`;
+          });
+        }
         const address = createAndAppend(container, "p");
         address.textContent = `Address : ${item.address.label}`;
         if (item.foodTypes) {
