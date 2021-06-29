@@ -26,7 +26,7 @@ function renderPlaceInformation(page, placeObject) {
       const discoverImg = createElementWithClass(discover, "img", "img-card");
       discoverImg.src = "public/discover.jpg";
       const discoverText = createElementWithClass(discover, "p", "txt-card");
-      discoverText.textContent = `Discover ${placeObject.place}`;
+      discoverText.textContent = `Discover ${placeObject.abstracted}`;
       discoverPlace(page, discover, placeObject);
       const language = createElementWithClass(page, "div", "grid-items");
       language.textContent = `Language:    ${result.languages[0].name}`;
@@ -46,7 +46,7 @@ function renderPlaceInformation(page, placeObject) {
         "p",
         "txt-card"
       );
-      weatherText.textContent = `Weather in ${placeObject.place}`;
+      weatherText.textContent = `Weather in ${placeObject.abstracted}`;
       weather(page, weatherContainer, placeObject);
       const wiki = createAndAppend(page, "a", "wiki");
       wiki.target = "_blank";

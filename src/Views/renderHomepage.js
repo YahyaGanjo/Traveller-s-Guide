@@ -7,8 +7,9 @@ function renderHomepage() {
     "div",
     "homepage-container"
   );
-  const welcome = createAndAppend(homepageContainer, "p", "welcome");
-  welcome.textContent = "It is vacation time, search your destination";
+  const welcome = createAndAppend(homepageContainer, "h1", "welcome");
+  welcome.innerHTML =
+    "Travellers Guide App<br>search your destination: country, city, town ..";
   const searchContainer = createAndAppend(
     homepageContainer,
     "div",
@@ -20,5 +21,7 @@ function renderHomepage() {
   createAndAppend(searchContainer, "div", "search-search");
   const image = createAndAppend(homepageContainer, "img", "homepage-image");
   image.src = "public/travellers.png";
+  const copy = createAndAppend(homepageContainer, "div", "footer");
+  copy.innerHTML = "Made with love by Yahya &copy; HYF 2021";
 }
 export default renderHomepage;
