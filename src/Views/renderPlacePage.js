@@ -19,6 +19,7 @@ function renderPlacePage(usersInput, page) {
         ) {
           const placeObject = {
             place: response.items[0].address.label,
+            abstracted: response.items[0].title.split(",")[0],
             country: response.items[0].address.countryName,
             position: [
               response.items[0].position.lat,
