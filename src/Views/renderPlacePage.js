@@ -1,6 +1,6 @@
 import clearCurrentPage from "../Utils/clearCurrentPage.js";
 import fetchData from "../Utils/fetchData.js";
-import placeNotFound from "../Views/placeNotFound.js";
+import notFound from "../Views/notFound.js";
 import renderPlaceInformation from "../Views/renderPlaceInformation.js";
 
 function renderPlacePage(usersInput, page) {
@@ -11,7 +11,7 @@ function renderPlacePage(usersInput, page) {
   )
     .then((response) => {
       if (response.items.length === 0) {
-        placeNotFound(usersInput, page);
+        notFound(usersInput, page);
       } else {
         if (
           response.items[0].resultType === "locality" ||
@@ -27,7 +27,7 @@ function renderPlacePage(usersInput, page) {
           };
           renderPlaceInformation(page, placeObject);
         } else {
-          placeNotFound(usersInput, page);
+          notFound(usersInput, page);
         }
       }
     })
