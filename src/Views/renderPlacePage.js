@@ -13,6 +13,7 @@ function renderPlacePage(usersInput, page) {
       if (response.items.length === 0) {
         notFound(usersInput, page);
       } else {
+        console.log(response);
         if (
           response.items[0].resultType === "locality" ||
           response.items[0].resultType === "administrativeArea"

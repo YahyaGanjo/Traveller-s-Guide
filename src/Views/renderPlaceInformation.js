@@ -8,19 +8,14 @@ import weather from "../Listeners/weather.js";
 function renderPlaceInformation(page, placeObject) {
   const title = createAndAppend(page, "h1", "title");
   title.textContent = placeObject.place;
-  fetchData(`https://restcountries.eu/rest/v2/name/${placeObject.country}`, {
-    mode: "no-cors",
-  })
+  fetchData(`https://restcountries.com/v3/name/${placeObject.country}`)
     .then((response) => {
       if (!response[0]) {
         throw Error(response.statusText);
       }
-      return response;
-    })
-    .then((response) => {
       const result = response[0];
       const flag = createElementWithClass(page, "img", "grid-items");
-      flag.src = result.flag;
+      flag.src = result.flags[1];
       flag.id = "flag";
       const region = createElementWithClass(page, "div", "grid-items");
       region.textContent = `Region:    ${result.subregion}`;
@@ -31,11 +26,15 @@ function renderPlaceInformation(page, placeObject) {
       discoverText.textContent = `Discover ${placeObject.abstracted}`;
       discoverPlace(page, discover, placeObject);
       const language = createElementWithClass(page, "div", "grid-items");
-      language.textContent = `Language:    ${result.languages[0].name}`;
+      language.textContent = `Language:    ${
+        result.languages[Object.keys(result.languages)[0]]
+      }`;
       const currency = createElementWithClass(page, "div", "grid-items");
-      currency.textContent = `Currency:    ${result.currencies[0].name}`;
-      if (result.currencies[0].symbol)
-        currency.textContent += " / " + result.currencies[0].symbol;
+      currency.textContent = `Currency:    ${
+        result.currencies[Object.keys(result.currencies)[0]].name
+      }`;
+      currency.textContent +=
+        " / " + result.currencies[Object.keys(result.currencies)[0]].symbol;
       const weatherContainer = createAndAppend(page, "div", "weather-card");
       const weatherImg = createElementWithClass(
         weatherContainer,
@@ -54,8 +53,8 @@ function renderPlaceInformation(page, placeObject) {
       wiki.target = "_blank";
       wiki.href = `https://en.wikipedia.org/wiki/${placeObject.country}`;
       wiki.textContent = `${placeObject.country}/Wiki`;
-      const time = createElementWithClass(page, "div", "grid-items");
-      time.textContent = `Time zone:    ${result.timezones[0]}`;
+      const area = createElementWithClass(page, "div", "grid-items");
+      area.textContent = `Country's area: ${result.area}km²`;
       const lat = placeObject.position[0];
       const lng = placeObject.position[1];
       createMap(page, lat, lng);
