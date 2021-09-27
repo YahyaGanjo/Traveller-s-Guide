@@ -8,7 +8,9 @@ import weather from "../Listeners/weather.js";
 function renderPlaceInformation(page, placeObject) {
   const title = createAndAppend(page, "h1", "title");
   title.textContent = placeObject.place;
-  fetchData(`https://restcountries.eu/rest/v2/name/${placeObject.country}`)
+  fetchData(`https://restcountries.eu/rest/v2/name/${placeObject.country}`, {
+    mode: "no-cors",
+  })
     .then((response) => {
       if (!response[0]) {
         throw Error(response.statusText);
